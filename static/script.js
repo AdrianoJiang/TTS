@@ -1,26 +1,32 @@
-// Este script lida com o evento de clique no botão 'generate-button'
+
 document.getElementById('generate-button').onclick = function() {
-  // Captura a entrada do usuário no campo 'text-input'
+
   var userInput = document.getElementById('text-input').value;
 
-  // Envia a entrada do usuário para o servidor via POST request para a rota '/generate_audio'
+  // Mostra a mensagem de carregamento
+  document.getElementById('loading-message').style.display = 'block';
+
+
   fetch('/generate_audio', {
-    method: 'POST', // Método HTTP
+    method: 'POST', 
     headers: {
-      'Content-Type': 'application/json' // Define o tipo de conteúdo como JSON
+      'Content-Type': 'application/json' 
     },
-    body: JSON.stringify({ text: userInput }) // Converte os dados do usuário em uma string JSON para o corpo da requisição
+    body: JSON.stringify({ text: userInput }) 
   })
-  .then(response => response.json()) // Converte a resposta recebida em JSON
+  .then(response => response.json()) 
   .then(data => {
-    // Após receber a resposta, cria um link para baixar o arquivo de áudio automaticamente
-    var downloadLink = document.createElement('a');
-    downloadLink.href = '/audio/' + data.audio_path; 
-    downloadLink.download = data.audio_path; 
-    downloadLink.textContent = 'Baixar Áudio'; 
-    document.body.appendChild(downloadLink); 
-    downloadLink.click(); 
-    document.body.removeChild(downloadLink); 
+    document.getElementById('loading-message').style.display = 'none';
+
+    // Configura o player de áudio com o arquivo gerado e mostra o player
+    var audioPlayer = document.getElementById('audio-player');
+    audioPlayer.src = '/audio/' + data.audio_path;
+    audioPlayer.style.display = 'block';
+    audioPlayer.load(); // Carrega o áudio
+    audioPlayer.play(); // Começa a reprodução
   })
-  .catch(err => console.error(err)); 
+  .catch(err => {
+    console.error(err);
+    document.getElementById('loading-message').style.display = 'none';
+  }); 
 };

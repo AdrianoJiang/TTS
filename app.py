@@ -29,7 +29,7 @@ def generate_audio():
     # TODO: Aqui o arquivo de áudio gerado pelo TTS será salvo na pasta AUDIO_FOLDER
     audio_path = os.path.join(AUDIO_FOLDER, audio_filename)
 
-    # Retorna o caminho relativo do arquivo de áudio
+    # Retorna o caminho relativo do arquivo de áudio    
     return jsonify({"audio_path": audio_filename})
 
 @app.route('/audio/<filename>')

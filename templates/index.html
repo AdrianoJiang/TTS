@@ -22,7 +22,9 @@
             <div class="button-container">
                 <span id="button-label">Gerar</span>
                 <input type="image" id="generate-button" src="{{ url_for('static', filename='images/button_icon.png') }}" alt="Gerar" />
-            </div>            
+            </div>
+            <span id="loading-message" style="display: none;">Gerando...</span>
+            <audio id="audio-player" controls style="display: none;"></audio>           
         </div>
     </div>
     <!-- Script JavaScript que contém a lógica de interação do usuário -->
