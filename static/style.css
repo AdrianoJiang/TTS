@@ -156,7 +156,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
   margin-top: 20px;
 }
 
@@ -177,10 +176,10 @@ h1 {
 
 #left-image-placeholder {
   left: 50%; 
-  transform: translateX(-120%);
+  transform: translateX(-110%);
 }
 
 #right-image-placeholder {
   right: 50%;
-  transform: translateX(120%); 
+  transform: translateX(110%); 
 }

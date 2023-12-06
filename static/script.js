@@ -10,7 +10,7 @@ document.getElementById('generate-button').onclick = function() {
   var leftImagePlaceholder = document.getElementById('left-image-placeholder');
   var rightImagePlaceholder = document.getElementById('right-image-placeholder');
 
-  leftImagePlaceholder.innerHTML = '<img src="/static/images/lefImage.png" alt="leftImage" />';
+  leftImagePlaceholder.innerHTML = '<img src="/static/images/leftImage.png" alt="leftImage" />';
   rightImagePlaceholder.innerHTML = '<img src="/static/images/rightImage.png" alt="rightImage" />';
 
   leftImagePlaceholder.style.display = 'block';
